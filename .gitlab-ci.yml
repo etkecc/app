@@ -1,0 +1,29 @@
+variables:
+  VERSION: v1.11.10
+
+docker:
+  only: ['main']
+  services:
+    - docker:dind
+  image: jdrouet/docker-with-buildx:stable
+  script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker buildx create --use
+    - docker buildx build --platform linux/arm/v7,linux/arm64/v8,linux/amd64 --push -t ${CI_REGISTRY_IMAGE}:${VERSION} .
+
+cdn:
+  only: ['main']
+  image: vectorim/element-web:$VERSION
+  before_script:
+    - apk --no-cache add lftp
+  script:
+    - cp ./config.json /app/config.json
+    - cp ./background.png /app/background.png
+    - sed -i 's|Element|etke.cc|g' /app/manifest.json
+	  - sed -i 's|Element|etke.cc|g' /app/index.html
+	  - sed -i 's|app.element.io/themes/element/img/logos/opengraph.png|etke.cc/img/logo.png|g' /app/index.html
+	  - sed -i 's|vector-icons/favicon.*|https://etke.cc/img/logo.png">|g' /app/index.html
+	  - sed -i 's|Element|etke.cc|g' /app/welcome.html
+	  - sed -i 's|element.io|etke.cc|g' /app/welcome.html
+	  - sed -i 's|welcome/images/logo.svg|https://etke.cc/img/logo.png|g' /app/welcome.html
+    - lftp -e "open -u $FTP_USER,$FTP_PASS $FTP_HOST; mirror --reverse --verbose app/ /$FTP_USER"
