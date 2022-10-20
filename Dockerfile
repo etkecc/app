@@ -1,4 +1,6 @@
-FROM vectorim/element-web
+ARG VERSION=latest
+
+FROM vectorim/element-web:$VERSION
 
 COPY ./config.json /app/config.json
 COPY ./background.png /app/background.png
