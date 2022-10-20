@@ -26,4 +26,4 @@ cdn:
     - sed -i 's|Element|etke.cc|g' /app/welcome.html
     - sed -i 's|element.io|etke.cc|g' /app/welcome.html
     - sed -i 's|welcome/images/logo.svg|https://etke.cc/img/logo.png|g' /app/welcome.html
-    - lftp -e "open -u $FTP_USER,$FTP_PASS $FTP_HOST; mirror --reverse --verbose app/ /$FTP_USER"
+    - lftp -e "open -u $FTP_USER,$FTP_PASS $FTP_HOST; mirror --reverse --verbose /app/ /$FTP_USER"
