@@ -1,4 +1,4 @@
-# [app.etke.host](https://app.etke.host)
+# [app.etke.cc](https://app.etke.cc)
 
 Branded [Element Web](https://github.com/vector-im/element-web/), hosted on blazing fast [Bunny CDN](https://bunny.net?ref=z3pduwxhge).
 
