@@ -4,12 +4,12 @@ variables:
 docker:
   only: ['main']
   services:
-    - docker:dind
-  image: jdrouet/docker-with-buildx:stable
+    - ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/docker:dind
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/jdrouet/docker-with-buildx:stable
   script:
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
     - docker buildx create --use
-    - docker buildx build --build-arg PREFIX=${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX} --build-arg VERSION=${VERSION} --platform linux/arm64/v8,linux/amd64 --push -t ${CI_REGISTRY_IMAGE}:${VERSION} .
+    - docker buildx build --build-arg VERSION=${VERSION} --platform linux/arm64/v8,linux/amd64 --push -t ${CI_REGISTRY_IMAGE}:${VERSION} .
 
 cdn:
   only: ['main']
