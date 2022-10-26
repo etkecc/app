@@ -9,13 +9,14 @@ docker:
   script:
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
     - docker buildx create --use
-    - docker buildx build --build-arg VERSION=${VERSION} --platform linux/arm64/v8,linux/amd64 --push -t ${CI_REGISTRY_IMAGE}:${VERSION} .
+    - docker buildx build --build-arg PREFIX=${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX} VERSION=${VERSION} --platform linux/arm64/v8,linux/amd64 --push -t ${CI_REGISTRY_IMAGE}:${VERSION} .
 
 cdn:
   only: ['main']
-  image: vectorim/element-web:$VERSION
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/vectorim/element-web:${VERSION}
   before_script:
     - apk --no-cache add lftp
   script:
     - cp ./config.json /app/config.json
-    - cd /app; lftp -e "open -u $FTP_USER,$FTP_PASS $FTP_HOST; cd /$FTP_USER/; mirror --reverse --delete --scan-all-first --verbose . ."
+    - cd /app; lftp -e "open -u $FTP_USER,$FTP_PASS $FTP_HOST; cd /$FTP_USER/; mirror --reverse --verbose . ."
+    #  --delete --scan-all-first
