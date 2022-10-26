@@ -18,4 +18,4 @@ cdn:
     - apk --no-cache add lftp
   script:
     - cp ./config.json /app/config.json
-    - cd /app; lftp -e "open -u $FTP_USER,$FTP_PASS $FTP_HOST; mirror --reverse --delete --scan-all-first --verbose . /$FTP_USER/"
+    - cd /app; lftp -e "open -u $FTP_USER,$FTP_PASS $FTP_HOST; cd /$FTP_USER/; mirror --reverse --delete --scan-all-first --verbose . ."
