@@ -1,5 +1,5 @@
 variables:
-  VERSION: v1.11.11
+  VERSION: v1.11.10
 
 docker:
   only: ['main']
@@ -18,4 +18,4 @@ cdn:
     - apk --no-cache add lftp
   script:
     - cp ./config.json /app/config.json
-    - lftp -e "set ftp:use-tvfs yes; open -u $FTP_USER,$FTP_PASS $FTP_HOST; mirror --reverse --delete --verbose --parallel=10 --max-errors=999999 /app/ /$FTP_USER/"
+    - lftp -e "set ftp:use-tvfs yes; open -u $FTP_USER,$FTP_PASS $FTP_HOST; mirror --reverse --delete --verbose --parallel=50 --max-errors=999999 /app/ /$FTP_USER/"
