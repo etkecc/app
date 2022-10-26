@@ -26,12 +26,9 @@
 		"fdroid": null
 	},
 	"mobile_guide_toast": false,
-	"brand": "etke.cc",
 	"branding": {
-      "welcome_background_url": "/background.png",
-      "auth_header_logo_url": "https://etke.cc/img/logo.png",
       "auth_footer_links": [
-         {"text": "Hosted by etke.cc", "url": "https://etke.cc"}
+         {"text": "Matrix servers by etke.cc", "url": "https://etke.cc"}
       ]
    },
 	"integrations_ui_url": "https://scalar.vector.im/",
@@ -43,7 +40,6 @@
 		"https://scalar-staging.vector.im/api",
 		"https://scalar-staging.riot.im/scalar/api"
 	],
-	"hosting_signup_link": "https://etke.cc",
 	"uisi_autorageshake_app": "element-auto-uisi",
 	"show_labs_settings": true,
 	"room_directory": {
@@ -54,20 +50,6 @@
 			"libera.chat"
 		]
 	},
-	"terms_and_conditions_links": [
-		{
-			"url": "https://etke.cc/privacy",
-			"text": "Privacy Policy"
-		}
-	],
-	"host_signup": {
-		"brand": "etke.cc",
-		"domains": [
-			"matrix.org"
-		],
-		"privacy_policy_url": "https://etke.cc/privacy"
-	},
-	"privacy_policy_url": "https://etke.cc/privacy",
 	"features": {
 		"feature_report_to_moderators": true,
 		"feature_pinning": true,
