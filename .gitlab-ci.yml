@@ -4,7 +4,7 @@ variables:
 docker:
   only: ['main']
   services:
-    - ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/docker:dind
+    - docker:dind
   image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/jdrouet/docker-with-buildx:stable
   script:
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
