@@ -18,5 +18,5 @@ cdn:
     - apk --no-cache add lftp
   script:
     - cp ./config.json /app/config.json
-    - lftp -d -e "set ftp:use-tvfs yes; open -u $FTP_USER,$FTP_PASS $FTP_HOST; rm -r /$FTP_USER/"
-    - lftp -e "set ftp:use-tvfs yes; open -u $FTP_USER,$FTP_PASS $FTP_HOST; mirror --reverse --verbose --parallel=100 /app/ /$FTP_USER/"
+    - lftp -e "set ftp:use-tvfs yes; open -u $FTP_USER,$FTP_PASS $FTP_HOST; rm -r /$FTP_USER/"
+    - lftp -e "set ftp:use-tvfs yes; open -u $FTP_USER,$FTP_PASS $FTP_HOST; mirror --reverse --verbose --parallel=25 /app/ /$FTP_USER/"
