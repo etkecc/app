@@ -5,7 +5,7 @@
 	"disable_3pid_login": false,
 	"default_server_config": {
 		"m.homeserver": {
-			"base_url": "https://matrix-client.matrix.org"
+			"base_url": "https://matrix.etke.cc"
 		},
 		"im.vector.riot.e2ee": {
 			"default": true
