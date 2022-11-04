@@ -20,4 +20,4 @@ cdn:
     - cp ./config.json /app/config.json
     - time lftp -e "set ftp:use-tvfs yes; open -u $FTP_USER,$FTP_PASS $FTP_HOST; rm -r /$FTP_USER/"
     - time lftp -e "set ftp:use-tvfs yes; open -u $FTP_USER,$FTP_PASS $FTP_HOST; mirror --reverse --verbose --parallel=25 /app/ /$FTP_USER/"
-    - curl -X POST --url $API_URL -H "Content-Type: application/json" -H "AccessKey: $API_KEY"
+    - 'curl -X POST --url "$API_URL" -H "Content-Type: application/json" -H "AccessKey: $API_KEY"'
