@@ -24,6 +24,7 @@ cdn:files:
 
 cdn:deploy:
   only: ['main']
+  needs: ['cdn:files']
   dependencies: ['cdn:files']
   image: registry.gitlab.com/etke.cc/base/build
   script:
