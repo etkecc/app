@@ -16,16 +16,16 @@ cdn:files:
   image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/vectorim/element-web:${VERSION}
   script:
     - cp ./config.json /app/config.json
+    - mv /app ./public
   artifacts:
-    name: app
     expire_in: 1 hour
     paths:
-      - /app
+      - public
 
 cdn:deploy:
   only: ['main']
-  needs: ['cdn:files']
+  dependencies: ['cdn:files']
   image: registry.gitlab.com/etke.cc/base/build
   script:
-    - bunny-upload -z $BUNNY_ZONE -k $BUNNY_KEY -p /app
+    - bunny-upload -z $BUNNY_ZONE -k $BUNNY_KEY -p ./public
     - 'curl -X POST --url "$API_URL" -H "Content-Type: application/json" -H "AccessKey: $API_KEY"'
