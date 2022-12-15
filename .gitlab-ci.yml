@@ -11,13 +11,21 @@ docker:
     - docker buildx create --use
     - docker buildx build --build-arg VERSION=${VERSION} --platform linux/arm64/v8,linux/amd64 --push -t ${CI_REGISTRY_IMAGE}:${VERSION} .
 
-cdn:
+cdn:files:
   only: ['main']
   image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/vectorim/element-web:${VERSION}
-  before_script:
-    - apk --no-cache add lftp curl
   script:
     - cp ./config.json /app/config.json
-    - time lftp -e "set ftp:use-tvfs yes; open -u $FTP_USER,$FTP_PASS $FTP_HOST; rm -r /$FTP_USER/"
-    - time lftp -e "set ftp:use-tvfs yes; open -u $FTP_USER,$FTP_PASS $FTP_HOST; mirror --reverse --verbose --parallel=25 /app/ /$FTP_USER/"
+  artifacts:
+    name: app
+    expire_in: 1 hour
+    paths:
+      - /app
+
+cdn:deploy:
+  only: ['main']
+  needs: ['cdn:files']
+  image: registry.gitlab.com/etke.cc/base/build
+  script:
+    - bunny-upload -z $BUNNY_ZONE -k $BUNNY_KEY -p /app
     - 'curl -X POST --url "$API_URL" -H "Content-Type: application/json" -H "AccessKey: $API_KEY"'
