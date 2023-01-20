@@ -13,7 +13,7 @@ docker:
 
 cdn:files:
   only: ['main']
-  image: registry.etke.cc/vectorim/element-web:${VERSION}
+  image: registry.etke.cc/etke.cc/app:${VERSION}
   needs: ['docker']
   dependencies: ['docker']
   script:
