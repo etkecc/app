@@ -13,7 +13,9 @@ docker:
 
 cdn:files:
   only: ['main']
-  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/vectorim/element-web:${VERSION}
+  image: registry.etke.cc/vectorim/element-web:${VERSION}
+  needs: ['docker']
+  dependencies: ['docker']
   script:
     - cp ./config.json /app/config.json
     - mv /app ./public
