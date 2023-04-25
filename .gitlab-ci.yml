@@ -1,5 +1,5 @@
 variables:
-  VERSION: v1.11.29
+  VERSION: v1.11.30
 
 docker:
   only: ['main']
