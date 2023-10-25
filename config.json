@@ -4,7 +4,7 @@
 	"disable_login_language_selector": false,
 	"disable_3pid_login": false,
 	"room_directory": {
-		"servers": ["matrixrooms.info", "etke.cc", "libera.chat", "gitter.im", "matrix.org"]
+		"servers": ["matrixrooms.info", "etke.cc"]
 	},
 	"default_server_config": {
 		"m.homeserver": {
