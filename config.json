@@ -45,14 +45,6 @@
 	],
 	"uisi_autorageshake_app": "element-auto-uisi",
 	"show_labs_settings": true,
-	"room_directory": {
-		"servers": [
-			"etke.cc",
-			"matrix.org",
-			"gitter.im",
-			"libera.chat"
-		]
-	},
 	"features": {
 		"feature_report_to_moderators": true,
 		"feature_pinning": true,
