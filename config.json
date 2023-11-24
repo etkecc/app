@@ -31,7 +31,7 @@
 	"mobile_guide_toast": false,
 	"branding": {
 		"auth_footer_links": [
-			{"text": "Matrix servers by etke.cc", "url": "https://etke.cc"}
+			{"text": "Matrix servers by etke.cc", "url": "https://etke.cc/?utm_source=app&utm_medium=footer&utm_campaign=managed-by"}
 		]
 	},
 	"integrations_ui_url": "https://scalar.vector.im/",
