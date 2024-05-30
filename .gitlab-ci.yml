@@ -30,5 +30,4 @@ cdn:deploy:
   dependencies: ['cdn:files']
   image: registry.gitlab.com/etke.cc/base/build
   script:
-    - bunny-upload -z $BUNNY_ZONE -k $BUNNY_KEY -p ./public
-    - 'curl -X POST --url "$API_URL" -H "Content-Type: application/json" -H "AccessKey: $API_KEY"'
+    - bunny-upload -c $BUNNY_CONFIG
