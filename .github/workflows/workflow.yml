@@ -45,7 +45,7 @@ jobs:
     name: Build and Release
     needs: build-publish
     runs-on: ubuntu-latest
-    container: ghcr.io/${{ github.repository }}:${{ env.app_version }}
+    container: ghcr.io/${{ github.repository }} # as this job depends on the build-publish and build-publish always publishes the latest tag
     steps:
       - uses: actions/checkout@v4
       - name: Configure
