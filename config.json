@@ -20,15 +20,8 @@
 		}
 	},
 	"default_device_display_name": "app.etke.cc",
-	"desktop_builds": {
-		"available": false
-	},
-	"mobile_builds": {
-		"ios": null,
-		"android": null,
-		"fdroid": null
-	},
 	"mobile_guide_toast": false,
+	"force_verification": true,
 	"branding": {
 		"auth_footer_links": [
 			{"text": "Matrix servers by etke.cc", "url": "https://etke.cc/?utm_source=app&utm_medium=footer&utm_campaign=managed-by"}
