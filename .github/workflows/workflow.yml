@@ -47,7 +47,9 @@ jobs:
     name: Build and Release
     needs: build-publish
     runs-on: ubuntu-latest
-    container: ghcr.io/${{ github.repository }} # as this job depends on the build-publish and build-publish always publishes the latest tag
+    container:
+      image: ghcr.io/${{ github.repository }} # as this job depends on the build-publish and build-publish always publishes the latest tag
+      options: --user root
     steps:
       - uses: actions/checkout@v4
       - name: Configure
