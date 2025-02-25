@@ -3,7 +3,7 @@ on:
   push:
     branches: [ "main" ]
 env:
-  app_version: v1.11.92
+  app_version: v1.11.93
   bunny_version: v0.1.1
 permissions:
   checks: write
