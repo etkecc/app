@@ -1,5 +1,5 @@
 ARG VERSION=latest
 
-FROM vectorim/element-web:$VERSION
+FROM ghcr.io/element-hq/element-web:$VERSION
 
 COPY ./config.json /app/config.json
