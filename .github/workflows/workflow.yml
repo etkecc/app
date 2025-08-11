@@ -52,7 +52,7 @@ jobs:
       image: ghcr.io/${{ github.repository }} # as this job depends on the build-publish and build-publish always publishes the latest tag
       options: --user root
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Configure
         run: |
           cp ./config.json /app/config.json
