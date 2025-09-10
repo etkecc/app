@@ -4,7 +4,7 @@ on:
     branches: [ "main" ]
 env:
   # renovate: datasource=docker depName=ghcr.io/element-hq/element-web
-  app_version: v1.11.110
+  app_version: v1.11.111
   bunny_version: v0.1.1
 permissions:
   checks: write
