@@ -35,7 +35,7 @@ jobs:
             type=raw,value=latest,enable=${{ github.ref_name == 'main' }}
             type=raw,value=${{ env.app_version }},enable=${{ github.ref_name == 'main' }}
       - name: Build and push
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           platforms: linux/amd64,linux/arm64
           push: true
